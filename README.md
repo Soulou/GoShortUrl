@@ -4,6 +4,9 @@ This project is a URLs shortener written in Go using the revel framework
 > http://golang.org
 > http://robfig.github.com/revel
 
+This application uses the redis database, please assume it's running while you want to test the application 
+> http://redis.io/
+
 I wrote that project to try out the Go language.
 
 
