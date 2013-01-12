@@ -2,7 +2,7 @@ package models
 
 import (
 	revel "github.com/robfig/revel"
-	helpers "SoulouUrl/app/helpers"
+	helpers "github.com/Soulou/GoShortUrl/app/helpers"
 	"crypto/sha1"
 	"io"
 	"fmt"

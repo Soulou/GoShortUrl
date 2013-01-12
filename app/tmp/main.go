@@ -4,9 +4,9 @@ import (
 	"flag"
 	"reflect"
 	"github.com/robfig/revel"
-	controllers "SoulouUrl/app/controllers"
-	_ "SoulouUrl/app/models"
-	tests "SoulouUrl/tests"
+	controllers "github.com/Soulou/GoShortUrl/app/controllers"
+	_ "github.com/Soulou/GoShortUrl/app/models"
+	tests "github.com/Soulou/GoShortUrl/tests"
 	controllers0 "github.com/robfig/revel/modules/testrunner/app/controllers"
 )
 

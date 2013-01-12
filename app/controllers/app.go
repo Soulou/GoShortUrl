@@ -2,7 +2,7 @@ package controllers
 
 import (
 	"github.com/robfig/revel"
-	"SoulouUrl/app/models"
+	"github.com/Soulou/GoShortUrl/app/models"
 )
 
 type Application struct {
