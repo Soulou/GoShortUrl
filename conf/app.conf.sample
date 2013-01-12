@@ -1,0 +1,41 @@
+app.name=SoulouUrl
+app.secret=bPlNFGdSC2wd8f2QnFhk5A84JJjKWZdKH9H2FHFuvUs9Jz8UvBHv3Vc5awx39ivu
+
+## Set the url of your website
+# http.addr = localhost
+# http.port = 9000
+#
+http.addr =
+http.port = 9000
+
+cookie.prefix=REVEL
+
+[dev]
+results.pretty=true
+results.staging=true
+watch=true
+
+module.testrunner = github.com/robfig/revel/modules/testrunner
+
+log.trace.output = off
+log.info.output  = stderr
+log.warn.output  = stderr
+log.error.output = stderr
+
+## You must run a redis server to run this project
+## If your server is protected set the password
+# redis.password =
+## We need to know the database number also
+# redis.dbnumber = 
+
+[prod]
+results.pretty=false
+results.staging=false
+watch=false
+
+module.testrunner = 
+
+log.trace.output = off
+log.info.output  = off
+log.warn.output  = %(app.name)s.log
+log.error.output = %(app.name)s.log

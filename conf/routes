@@ -1,0 +1,17 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+GET     /              Application.Index
+POST    /url           UrlController.Save
+# GET			/{<[a-fA-F0-9]{10}digest}		UrlController.Show
+GET			/{digest}		UrlController.Show
+
+# Ignore favicon requests
+GET     /favicon.ico                            404
+
+# Map static resources from the /app/public folder to the /public path
+GET     /public/                                staticDir:public
+
+# Catch all
+*       /{controller}/{action}                  {controller}.{action}
