@@ -13,6 +13,7 @@ import (
 type Url struct {
 	Href string
 	Digest string
+	Counter int
 }
 
 func init() {
@@ -37,6 +38,14 @@ func NewUrl(url string) Url {
 	res := Url{url, fmt.Sprintf("%x", h.Sum(nil)), 0}
 
 	return res
+}
+
+func (url Url) IncCounter() {
+	redis_client, e := helpers.GetRedisClient()
+	if e != nil {
+		return nil, e
+	}
+	redis_client.Inc(fmt.Sprintf("visits:%s", url.Digest))
 }
 
 func FindUrl(digest string) (*Url, error) {
@@ -85,6 +94,7 @@ func (u Url) Save() error {
 		return e
 	}
 	redis_client.Set(u.Digest[0:5], []byte(u.Href))
+	redis_client.Set(fmt.Sprintf("%s_cnt", u.Digest[0:5]), 0)
 	redis_client.Rpush("digests", []byte(u.Digest[0:5]))
 
 	return nil
