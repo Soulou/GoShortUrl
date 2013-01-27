@@ -5,7 +5,7 @@
 GET     /              Application.Index
 POST    /url           UrlController.Save
 # GET			/{<[a-fA-F0-9]{10}digest}		UrlController.Show
-GET			/{digest}		UrlController.Show
+GET			/{digest}		   UrlController.Show
 
 # Ignore favicon requests
 GET     /favicon.ico                            404

@@ -9,7 +9,12 @@
 </form>
 
 <div id="urls">
-	<ul>
+	<table>
+		<th>
+			<tr>Complete URL</tr>
+			<tr>Shortened URL</tr>
+			<tr>Nomber of Redirections</tr>
+		</th>
 		{{ range .urls }}
 			<li>
 			{{ url_string . }}
@@ -17,7 +22,7 @@
 		{{ else }}
 			<li>Pas d'URL réduite</li>
 		{{ end }}
-	</ul>
+	</table>
 </div>
 
 {{template "footer.html" .}}
