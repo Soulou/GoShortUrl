@@ -24,9 +24,11 @@ func init() {
 		}
 		href := url.Href
 		if len(href) > 64 {
-			href = fmt.Sprintf("%s[...]%s", href[:30], href[len(href)-30:len(href)-1])
+			begin_url := href[:30]
+			end_url := href[len(href)-30:len(href-1)]
+			href = fmt.Sprintf("%s[...]%s", begin_url, end_url)
 		}
-		return template.HTML(fmt.Sprintf("<a href=\"%s\">%s</a> : <a href=\"http://%s/%x\">http://%s/%x</a>",
+		return template.HTML(fmt.Sprintf("<a href=\"%s\">%s</a> : <a href=\"http://%s/%s\">http://%s/%s</a>",
 			url.Href, html.EscapeString(href), addr, url.Digest, addr, url.Digest))
 	}
 }
