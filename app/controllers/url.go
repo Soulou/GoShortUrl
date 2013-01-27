@@ -23,5 +23,8 @@ func (c UrlController) Show(digest string) rev.Result {
 	if e != nil {
 		return c.RenderError(e)
 	}
+	if(c.Request.Format == "json") {
+		return c.RenderJson(url)
+	}
 	return c.Redirect(url.Href)
 }
