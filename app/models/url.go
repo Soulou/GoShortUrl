@@ -12,7 +12,7 @@ import (
 
 type Url struct {
 	Href string
-	Digest []byte
+	Digest string
 }
 
 func init() {
@@ -34,7 +34,7 @@ func NewUrl(url string) Url {
 	h := sha1.New()
 	io.WriteString(h, url)
 
-	res := Url{url, h.Sum(nil)}
+	res := Url{url, fmt.Sprintf("%x", h.Sum(nil)), 0}
 
 	return res
 }
@@ -49,7 +49,7 @@ func FindUrl(digest string) (*Url, error) {
 	if e != nil {
 		return nil , e
 	}
-	url := Url{string(href),[]byte(digest)}
+	url := Url{string(href), digest}
 
 	return &url, nil
 }
@@ -74,7 +74,7 @@ func FindUrls() ([]Url, error) {
 
 		url_bytes, e := redis_client.Get(fmt.Sprintf("%x", digest))
 		url := fmt.Sprintf("%s", url_bytes)
-		urls[i] = Url{url,digest}
+		urls[i] = Url{url,fmt.Sprintf("%x", digest)}
 	}
 	return urls[:], nil
 }
@@ -84,8 +84,8 @@ func (u Url) Save() error {
 	if e != nil {
 		return e
 	}
-	redis_client.Set(fmt.Sprintf("%x", u.Digest[0:5]), []byte(u.Href))
-	redis_client.Rpush("digests", u.Digest[0:5])
+	redis_client.Set(u.Digest[0:5], []byte(u.Href))
+	redis_client.Rpush("digests", []byte(u.Digest[0:5]))
 
 	return nil
 }
