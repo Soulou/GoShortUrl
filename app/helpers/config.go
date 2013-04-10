@@ -3,7 +3,7 @@ package helpers
 import (
 	"errors"
 	"fmt"
-	"github.com/robfig/revel"
+	rev "github.com/robfig/revel"
 )
 
 func getConfig(section string) (*rev.MergedConfig, error) {

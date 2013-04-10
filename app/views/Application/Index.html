@@ -5,7 +5,7 @@
 
 <form action="./url" method="post">
 	<label for="url">URL :</label>
-	<input id="url" name="url" placeholder="Link to shrten" type="text"/>
+	<input id="url" name="url" placeholder="Link to shorten" type="text"/>
 </form>
 
 <div id="urls">
@@ -16,14 +16,14 @@
 			<tr>Nomber of Redirections</tr>
 		</th>
 		{{ range .urls }}
-			<li>
-			{{ url_string . }}
-			</li>
+    <tr>
+      {{ url_string . }}
+		</tr>
 		{{ else }}
 			<li>Pas d'URL réduite</li>
 		{{ end }}
 	</table>
 </div>
 
-{{template "footer.html" .}}
+{{ template "footer.html" . }}
 
